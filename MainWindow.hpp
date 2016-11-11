@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow
     ~MainWindow();
     
   private:
-    void CreateGUI();
+    void CreateGUI(QScreen *);
     void ConnectSignals();
     
   private:

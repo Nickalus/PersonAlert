@@ -2,13 +2,19 @@
 
 MainWindow::MainWindow(QScreen * screen) 
 {
-  CreateGUI();
+  CreateGUI(screen);
   ConnectSignals();
 }
 
-void MainWindow::CreateGUI()
+MainWindow::~MainWindow()
+{
+
+}
+
+void MainWindow::CreateGUI(QScreen * screen)
 {
   //Create the GUI based off screen size
+    this->resize(screen->availableSize());
 }
 
 void MainWindow::ConnectSignals()
