@@ -19,7 +19,8 @@ INCLUDE_DIRECTORIES(/usr/lib64/gstreamer-1.0/include/)
 
 # Sources
 SET(SRC main.cpp
-        MainWindow.cpp)
+        MainWindow.cpp
+        Pipeline.cpp)
 
 SET(HEADERS MainWindow.hpp
             Pipeline.hpp)
