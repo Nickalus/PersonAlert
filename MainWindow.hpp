@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QScreen>
+#include <QPushButton>
+
+#include "Pipeline.hpp"
 
 class MainWindow : public QMainWindow
 {
@@ -17,6 +20,8 @@ class MainWindow : public QMainWindow
     void ConnectSignals();
     
   private:
+    Pipeline * mPipeline;
+    QPushButton * mButton;
 };
 
 #endif

@@ -2,33 +2,35 @@
 #define PIPELINE_HPP
 
 #include <gst/gst.h>
-#define GST_USE_UNSTABLE_API
-#include <gst/gl/gl.h>
-#include <gst/gl/gstglconfig.h>
-#include <gst/gl/egl/gstgldisplay_egl.h>
-#include <gst/video/video.h>
 
-#include <QOpenGLContext>
+#include <QObject>
 
 class Pipeline : public QObject
 {
   Q_OBJECT
   
   public:
-    Pipeline(QOpenGLContext *);
+    Pipeline();
+    ~Pipeline();
 
-  private:
     void CreatePipeline();
 
-    static void ClientDraw(GstElement *, GstGLContext *, GstSample *, Pipeline *);
-    static gboolean BusMessage(GstBus *, GstMessage *);
-    static gboolean SyncBusMessage(GstBus *, GstMessage *, Pipeline *);
+    //QVariant GetGLContext();
+
+  public slots:
+    void Start();
+
+  private:
+    static void Handoff(GstElement *, GstBuffer *, GstPad *, Pipeline *);
+
+    //static void ClientDraw(GstElement *, GstGLContext *, GstSample *, Pipeline *);
+    //gboolean ClientDraw(GstGLImageSink *, GstGLContext *, GstSample *, gpointer);
 
   private:
     GstElement * mPipeline;
     GstBus * mBus;
-    GstGLDisplay * mDisplay;
-    GstGLContext * mContext;
+    //GstGLDisplay * mDisplay;
+    //GstContext * mContext;
 };
 
 #endif
